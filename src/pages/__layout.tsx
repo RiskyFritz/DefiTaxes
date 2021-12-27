@@ -24,7 +24,6 @@ const __layout: React.FC = ({ children }) => {
 		<div>
 			<NavHeader />
 			{children}
-			<FooterNav />
 		</div>
 	);
 };

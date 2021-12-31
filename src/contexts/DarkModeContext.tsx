@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /// <reference types="chrome"/>
 import { createContext, useEffect, useState, useContext } from 'react';
 

@@ -2,46 +2,44 @@
 /// <reference types="chrome"/>
 import './index.css';
 import { useState, useEffect } from 'react';
+import verifyAccount from '../utils/verifyAccount';
 import AccountCard from '../components/AccountCard/AccountCard';
-import { verifyAccount } from '../utils/verifyAccount';
-import convertToOneAddress from '../utils/convertToOneAddress';
+import { AccountsInterface } from '../utils/accountsInterface';
 
 const Index = () => {
 	// --- hooks ----
 	// > dark mode
 	const [account, setAccount] = useState('');
-	const [accounts, setAllAccounts] = useState([] as string[]);
+	const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
 
-	const allAccounts = () => {
-		chrome.storage.sync.get('Accounts', (result) => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-			setAllAccounts(result.Accounts);
-			console.log(result.Accounts);
-		});
-	};
-
-	const update = (item: string) => {
-		allAccounts();
-		const array = accounts;
-		const newArray = array.filter(() => item !== '');
-		if (item !== '') {
-			newArray.push(item);
-			chrome.storage.sync.set({ Accounts: newArray });
-		}
-		setAllAccounts(array);
-	};
-
+	// > lifecycle
 	useEffect(() => {
-		const fetchAccounts = () => {
+		const fetchAccounts = async () => {
 			try {
-				const newAccounts = allAccounts();
+				const newAccounts = await renderAccounts(
+					'http://localhost:3000/accounts',
+				);
 				console.log(newAccounts);
+				setAccounts(newAccounts);
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		fetchAccounts();
 	}, []);
+
+	const onVerifyAccount = async () => {
+		try {
+			const verifiedAccount = await verifyAccount(account);
+			if (!verifiedAccount) {
+				throw new Error('Account not verified');
+			} else {
+				// post account logic
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className="m-4">
@@ -57,37 +55,33 @@ const Index = () => {
 					className="h-10 px-2 bg-blue-400 rounded-r-lg"
 					onClick={() => {
 						if (account !== '') {
-							console.log(convertToOneAddress(account));
-							if (verifyAccount(account) === true) {
-								update(account);
-								// set input to empty
-								setAccount('');
-							} else {
-								alert('Invalid Account Number');
-							}
+							onVerifyAccount();
 						}
 					}}
 				>
 					Submit
 				</button>
 			</div>
-			{
-				// loop through accounts and display them
-				accounts.map((item) => (
-					<div>
+			{isAccounts &&
+				accounts.map((item, index) => (
+					<div key={index}>
 						<AccountCard
 							number={item}
 							accounts={accounts}
 							onClick={() => {
-								// allAccounts();
 								allAccounts();
+								// allAccounts();
+								// console.log(item);
 							}}
 						/>
 					</div>
-				))
-			}
+				))}
 		</div>
 	);
 };
 
 export default Index;
+function renderAccounts(arg0: string) {
+	throw new Error('Function not implemented.');
+}
+

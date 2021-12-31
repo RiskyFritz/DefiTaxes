@@ -1,16 +1,9 @@
 {
 	"manifest_version": 2,
 
-	"name": "PassKey",
-	"description": "The best free password manager for Chrome",
+	"name": "DefiTaxes",
+	"description": "Free DefiKingdoms Tax Utility",
 	"version": "1.0",
-
-	"content_scripts": [
-		{
-			"matches": ["http://*/*", "https://*/*"],
-			"js": ["contentScripts/contentScript.js"]
-		}
-	],
 
 	"browser_action": {
 		"default_icon": "images/comp1.png",

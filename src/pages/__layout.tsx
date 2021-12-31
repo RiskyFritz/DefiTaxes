@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router'
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import NavHeader from '../components/NavHeader/NavHeader';
-import FooterNav from '../components/Footer/FooterNav';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const __layout: React.FC = ({ children }) => {
 	// ---- hooks ----
-	// > state
-	const [count, setCount] = useState(0);
+
 	// > router
 	const history = useHistory();
 
 	// ---- lifecycle ----
 	// onMount
 	useEffect(() => {
+		// eslint-disable-next-line no-restricted-globals
 		if (location.pathname === '/index.html') {
 			history.push('/');
 		}
-	},[])
+	}, [history]);
 
 	return (
 		<div>

@@ -7,7 +7,6 @@
 		"serve": "vite preview"
 	},
 	"dependencies": {
-		"@harmony-js/crypto": "^0.1.56",
 		"@react-spring/web": "^9.3.1",
 		"@types/chrome": "^0.0.164",
 		"axios": "^0.24.0",

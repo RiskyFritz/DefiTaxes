@@ -1,5 +1,5 @@
+import shortenAccount from '../../utils/shortAccout';
 /* eslint-disable no-undef */
-
 interface AccountCardProps {
 	number: string;
 	accounts: string[];
@@ -23,6 +23,7 @@ const AccountCard: React.FC<AccountCardProps> = ({
 		} else {
 			chrome.storage.sync.set({ Accounts: newArray });
 		}
+		onClick();
 	};
 
 	return (
@@ -31,7 +32,9 @@ const AccountCard: React.FC<AccountCardProps> = ({
 			// if isDeletingPassword, slowly fade out itemCard
 		>
 			<div className="flex flex-row justify-between mx-4 items-center">
-				<div className="text-base font-bold">{number}</div>
+				<div className="text-base font-bold">
+					{shortenAccount(number)}
+				</div>
 				<div className="w-4">
 					<button type="button" onClick={handleClick}>
 						<svg

@@ -4,7 +4,9 @@ import './index.css';
 import { useState, useEffect } from 'react';
 import verifyAccount from '../utils/verifyAccount';
 import AccountCard from '../components/AccountCard/AccountCard';
-import { AccountsInterface } from '../utils/accountsInterface';
+import { AccountsInterface } from '../utils/getAccounts';
+import { renderAccounts } from '../utils/getUserAccounts';
+import { deleteAccount } from '../utils/deleteAccount';
 
 const Index = () => {
 	// --- hooks ----
@@ -62,26 +64,23 @@ const Index = () => {
 					Submit
 				</button>
 			</div>
-			{isAccounts &&
-				accounts.map((item, index) => (
-					<div key={index}>
-						<AccountCard
-							number={item}
-							accounts={accounts}
-							onClick={() => {
-								allAccounts();
-								// allAccounts();
-								// console.log(item);
-							}}
-						/>
-					</div>
-				))}
+			{accounts.map((item, index) => (
+				<div key={index}>
+					<AccountCard
+						number={item.shortAccount}
+						id={item.id}
+						onClick={() => {
+							const newAccounts = accounts.filter(
+								(card) => card.id !== item.id,
+							);
+							setAccounts(newAccounts);
+							deleteAccount(item.id);
+						}}
+					/>
+				</div>
+			))}
 		</div>
 	);
 };
 
 export default Index;
-function renderAccounts(arg0: string) {
-	throw new Error('Function not implemented.');
-}
-

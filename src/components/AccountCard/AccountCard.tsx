@@ -1,28 +1,19 @@
-import shortenAccount from '../../utils/shortAccout';
-/* eslint-disable no-undef */
+import shortenAccount from '../../utils/shortAccount';
+
 interface AccountCardProps {
 	number: string;
-	accounts: string[];
+	id: string;
 	onClick: () => void;
 }
 
 const AccountCard: React.FC<AccountCardProps> = ({
 	number,
-	accounts,
+	id,
 	onClick,
 	children,
 }) => {
 	const handleClick = () => {
 		// remove specific number from chrome storage
-		const index = accounts.indexOf(number);
-		const newArray = accounts.splice(index, 1);
-		console.log(accounts);
-		console.log(newArray);
-		if (accounts.length === 1) {
-			chrome.storage.sync.set({ Accounts: [] });
-		} else {
-			chrome.storage.sync.set({ Accounts: newArray });
-		}
 		onClick();
 	};
 

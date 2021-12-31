@@ -3,12 +3,14 @@ import shortenAccount from '../../utils/shortAccount';
 interface AccountCardProps {
 	number: string;
 	id: string;
+	longNumber: string;
 	onClick: () => void;
 }
 
 const AccountCard: React.FC<AccountCardProps> = ({
 	number,
 	id,
+	longNumber,
 	onClick,
 	children,
 }) => {

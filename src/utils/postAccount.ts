@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const postCredentials = (data: {
+export const postAccount = (data: {
 	account: string;
 	shortAccount: string;
 	user: string;
 }) => {
-	const endpoint = 'http://localhost:3000/users/';
+	const endpoint = 'http://localhost:3000/accounts/';
 	console.log(data);
 
 	axios.post(endpoint, data).then((res) => {

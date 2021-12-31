@@ -10,7 +10,7 @@ import { deleteAccount } from '../utils/deleteAccount';
 import { postAccount } from '../utils/postAccount';
 import shortenAccount from '../utils/shortAccount';
 
-const Index = () => {
+const Dashboard = () => {
 	// --- hooks ----
 	// > dark mode
 	const [account, setAccount] = useState('');
@@ -80,12 +80,6 @@ const Index = () => {
 					Submit
 				</button>
 			</div>
-			<div className="flex flex-row justify-end">
-				<select className="p-1 w-20 outline-none my-2 rounded-md text-sm">
-					<option value="2020">2021</option>
-					<option value="2020">2022</option>
-				</select>
-			</div>
 			{accounts.map((item, index) => (
 				<div key={index}>
 					<AccountCard
@@ -106,4 +100,4 @@ const Index = () => {
 	);
 };
 
-export default Index;
+export default Dashboard;

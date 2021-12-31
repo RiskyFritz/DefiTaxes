@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import FooterNav from '../components/Footer/FooterNav';
 import NavHeader from '../components/NavHeader/NavHeader';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -22,6 +23,7 @@ const __layout: React.FC = ({ children }) => {
 		<div>
 			<NavHeader />
 			{children}
+			<FooterNav />
 		</div>
 	);
 };

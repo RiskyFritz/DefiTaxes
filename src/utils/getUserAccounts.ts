@@ -1,8 +1,8 @@
 import { getAccounts } from './getAccounts';
 
-export const renderAccounts = async (endpoint: string) => {
+export const renderAccounts = async (endpoint: string, user: string) => {
 	try {
-		const data = await getAccounts(endpoint);
+		const data = await getAccounts(endpoint, user);
 		console.log('something went right');
 		return data;
 	} catch (error) {

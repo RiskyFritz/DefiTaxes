@@ -81,7 +81,7 @@ const Index = () => {
 				</button>
 			</div>
 			<div className="flex flex-row justify-end">
-				<select className="p-1 w-20 outline-none my-2 rounded-md text-sm">
+				<select className="p-1 w-20 outline-none my-2 rounded-md text-sm dark:bg-gray-900">
 					<option value="2020">2021</option>
 					<option value="2020">2022</option>
 				</select>

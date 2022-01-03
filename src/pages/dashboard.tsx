@@ -63,7 +63,7 @@ const Dashboard = () => {
 		<div className="m-4">
 			<div className="flex flex-row items-center shadow-sm">
 				<input
-					className="p-4 h-10 text-md outline-none rounded-l-lg dark:bg-gray-900"
+					className="p-4 h-10 text-md outline-none rounded-l-lg dark:bg-zinc-900"
 					placeholder="Account Number"
 					value={account}
 					onChange={(e) => setAccount(e.target.value)}

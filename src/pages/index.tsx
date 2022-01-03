@@ -9,6 +9,7 @@ import { renderAccounts } from '../utils/getUserAccounts';
 import { deleteAccount } from '../utils/deleteAccount';
 import { postAccount } from '../utils/postAccount';
 import shortenAccount from '../utils/shortAccount';
+import { downloadFile } from '../utils/downloadFile';
 
 const Index = () => {
 	// --- hooks ----
@@ -81,7 +82,15 @@ const Index = () => {
 				</button>
 			</div>
 			<div className="flex flex-row justify-end">
-				<select className="p-1 w-20 outline-none my-2 rounded-md text-sm dark:bg-gray-900">
+				<select className="p-1 w-16 outline-none my-2 mr-2 rounded-md text-sm dark:bg-gray-900">
+					<option value="USD">USD</option>
+					<option value="EUR">EUR</option>
+					<option value="CAD">CAD</option>
+					<option value="GBP">GBP</option>
+					<option value="JPY">JPY</option>
+					<option value="AUD">AUD</option>
+				</select>
+				<select className="p-1 w-16 outline-none my-2 rounded-md text-sm dark:bg-gray-900">
 					<option value="2020">2021</option>
 					<option value="2020">2022</option>
 				</select>
@@ -102,6 +111,20 @@ const Index = () => {
 					/>
 				</div>
 			))}
+			<button
+				type="button"
+				className="flex flex-row justify-around items-center m-4 w-72 bg-blue-400 shadow-md pl-4 pr-4 pt-2 pb-2 rounded-xl font-semibold"
+				disabled
+				// onClick generate csv for account number
+				onClick={() => {
+					if (account) {
+						// download selected account's file
+						// downloadFile(accountNumber, year, currency);
+					}
+				}}
+			>
+				Generate CSV File
+			</button>
 		</div>
 	);
 };

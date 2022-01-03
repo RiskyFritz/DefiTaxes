@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-export const downloadFile = async (endpoint: string) => {
+export const downloadFile = async (
+	account: string,
+	year: number,
+	currency: string,
+) => {
 	// const { data } = await axios.get(endpoint);
 	// const items = data;
 	// let csvContent = 'data:text/csv;charset=utf-8,';

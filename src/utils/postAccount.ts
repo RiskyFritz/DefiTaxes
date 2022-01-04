@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-export const postAccount = (data: {
+export const postAccount = async (data: {
 	account: string;
 	shortAccount: string;
 	user: string;
 }) => {
 	const endpoint = 'http://localhost:3000/accounts/';
-	console.log(data);
-
-	axios.post(endpoint, data).then((res) => {
-		console.log(res);
-	});
+	await axios.post(endpoint, data);
 };

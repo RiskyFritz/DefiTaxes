@@ -14,7 +14,7 @@ export const getAccounts = async (
 	user: string,
 ): Promise<AccountsInterface[]> => {
 	const { data } = await axios.get<AccountsInterface[]>(endpoint, {
-		params: [user],
+		params: { user },
 	});
 	return data;
 };

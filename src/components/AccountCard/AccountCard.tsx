@@ -20,8 +20,8 @@ const AccountCard: React.FC<AccountCardProps> = ({
 }) => (
 	<div
 		className={`${
-			active ? 'opacity-100 ' : ''
-		}flex flex-row justify-between my-2 p-2 bg-white rounded-lg shadow-lg dark:bg-zinc-900 items-center opacity-50`}
+			active ? 'opacity-100 ' : 'opacity-50 '
+		} flex flex-row justify-between my-2 p-2 bg-white rounded-lg shadow-lg dark:bg-zinc-900 items-center`}
 	>
 		<button
 			className="flex-grow text-base font-bold text-left mx-2"
